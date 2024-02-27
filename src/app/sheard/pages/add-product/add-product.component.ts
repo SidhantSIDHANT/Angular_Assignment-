@@ -32,7 +32,7 @@ export class AddTemplateComponent implements OnInit, OnDestroy {
     this.productForm = new FormGroup({
       name: new FormControl(null, [Validators.required]),
       region: new FormControl(null, [Validators.required]),
-      modiFidedBy: new FormControl(),
+      modifidedBy: new FormControl(),
       modifiedOn: new FormControl(),
       formArray: this._fb.array([]),
       templateId : new FormControl()

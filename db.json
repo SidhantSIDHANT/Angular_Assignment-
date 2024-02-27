@@ -21,29 +21,16 @@
   ],
   "posts": [
     {
-      "id": 1,
-      "templateID": "T01",
-      "name": "US-FDA-01",
-      "region": "sdfsdf",
-      "modifiedBy": "sdfsdf",
-      "modifiedOn": "sdfsdf"
-    },
-    {
-      "name": "sdfsdf",
+      "name": "ss",
       "region": "s",
-      "modiFidedBy": "sdf",
+      "modifidedBy": "sfd",
       "modifiedOn": "sdf",
       "formArray": [],
+      "templateId": "sdfsdf",
       "id": 2
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
+  "comments": [],
   "profile": {
     "name": "typicode"
   }

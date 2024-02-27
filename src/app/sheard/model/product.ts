@@ -1,11 +1,12 @@
 
 
 export interface Iproduct {
-    templateID?: string,
+    templateId?: string,
     name: string,
     region: string,
     modifiedBy?: string,
-    modifiedOn?: string
+    modifiedOn?: string,
+    formArray : Array<any>
 }
 
 export interface IsignUp{
@@ -13,3 +14,4 @@ export interface IsignUp{
     email : string, 
     password : string
 }
+
