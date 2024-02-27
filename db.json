@@ -1,0 +1,50 @@
+{
+  "signUpUsers": [
+    {
+      "userName": "ss",
+      "email": "ss",
+      "password": "ss",
+      "id": 1
+    },
+    {
+      "userName": "sf",
+      "email": "sdf",
+      "password": "sdf",
+      "id": 2
+    },
+    {
+      "userName": "sdf",
+      "email": "sdf",
+      "password": "sdf",
+      "id": 3
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "templateID": "T01",
+      "name": "US-FDA-01",
+      "region": "sdfsdf",
+      "modifiedBy": "sdfsdf",
+      "modifiedOn": "sdfsdfsf"
+    },
+    {
+      "id": 1,
+      "templateID": "T01",
+      "name": "US-FDA-01",
+      "region": "sdfsdf",
+      "modifiedBy": "sdfsdf",
+      "modifiedOn": "sdfsdf"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

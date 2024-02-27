@@ -1,0 +1,74 @@
+
+
+::ng-deep #tree{
+    width: 20%;
+    background-color: #CF682F;
+    height: 100vh;
+    padding: 1rem;
+}
+
+.templates{
+    width: 100%;
+    box-shadow: rgba(0, 0, 0,.3) 0px 5px 15px;
+    margin: 1rem;
+    // background-color: red;
+}
+
+.mat-tree {
+     background: #CF682F; 
+}
+
+.example-tree-invisible {
+    display: none;
+  }
+  
+  .example-tree ul,
+  .example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+  }
+
+  .example-tree .mat-nested-tree-node div[role=group] {
+    padding-left: 40px;
+  }
+
+  .example-tree div[role=group] > .mat-tree-node {
+    padding-left: 0 !important;
+  }
+
+  [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+    background: transparent;
+    border: transparent;
+    color: white;
+}
+
+p{
+    cursor: pointer;
+}
+
+.active{
+    background-color: rgb(255, 255, 255, .2);
+}
+
+::ng-deep .mat-menu-panel {
+  background: transparent ; 
+}
+
+::ng-deep .mat-elevation-z4 {
+  box-shadow: none ;
+}
+
+
+#sign-in{
+  position: relative;
+}
+ 
+p{
+  color : white;
+}
+
+.margin-top{
+  margin-top : 42px;
+}

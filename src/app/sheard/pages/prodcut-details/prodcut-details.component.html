@@ -1,0 +1,64 @@
+<section class="mt-5" id="productTable">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <div class="form-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="text" class="form-control" placeholder="Start Date">
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="form-group">
+                    <label for="endDate">End Date</label>
+                    <input type="text" class="form-control" placeholder="End Date">
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="form-group">
+                    <label for="region">Region</label>
+                    <input type="text" class="form-control" placeholder="Region">
+                </div>
+            </div>
+            <div class="col-12 col-md-2">
+                <div class="form-group text-right mt-2">
+                    <label for=""></label>
+                    <button class="btn btn-block" id="btn-orange"><i class="fa-solid fa-magnifying-glass"></i> <span
+                            class="ml-2">Search</span></button>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 ">
+                <ng-container matColumnDef="templateId">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> templateId </th>
+                    <td mat-cell *matCellDef="let element"> {{element.templateID}} </td>
+                </ng-container>
+                <ng-container matColumnDef="TemplateName">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Region">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Region </th>
+                    <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+                </ng-container>
+                <ng-container matColumnDef="ModifiedBy">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Modified By </th>
+                    <td mat-cell *matCellDef="let element"> {{element.modifiedBy}} </td>
+                </ng-container>
+                <ng-container matColumnDef="ModifiedOn">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Modified On </th>
+                    <td mat-cell *matCellDef="let element"> {{element.modifiedOn}} </td>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Action</th>
+                    <td mat-cell *matCellDef="let element">
+                        <i class="fa-solid fa-marker mr-3"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>
+</section>

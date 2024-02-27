@@ -1,0 +1,19 @@
+
+
+table{
+    width: 100%;
+}
+
+::ng-deep th{
+    border: 1px solid #91ACC5;
+}
+::ng-deep tr{
+    text-align: center;
+    border: 1px solid #91ACC5;
+}
+
+
+::ng-deep td{
+    text-align: center;
+    border: 1px solid #91ACC5;
+}

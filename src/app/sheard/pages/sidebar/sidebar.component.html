@@ -1,0 +1,42 @@
+<section class="sidebar" id="sidebar">
+  <div class="d-flex" *ngIf="!openTemplateView; else templateView">
+    <div class="tree" id="tree">
+      <div class="mt-md-4">
+        <button mat-icon-button [matMenuTriggerFor]="menu" (close)="menu.close"
+          aria-label="Example icon-button with a menu">
+          <span>Configurations</span>
+          <i class="fa-solid fa-angle-right ml-3"></i>
+        </button>
+        <mat-menu #menu="matMenu" class="text-center">
+          <p>Templates</p>
+        </mat-menu>
+      </div>
+      <div class="margin-top">
+        <button mat-icon-button [matMenuTriggerFor]="menuI" (close)="menu.close"
+          aria-label="Example icon-button with a menu">
+          <span>Document Prep</span>
+           <i class="fa-solid fa-angle-right ml-3"></i>
+        </button>
+        <mat-menu #menuI="matMenu" class="text-center">
+          <p>Products</p>
+          <p>Applications</p>
+          <p>Sequences</p>
+        </mat-menu>
+      </div>
+    </div>
+    <div class="templates p-4">
+      <div class="d-flex justify-content-between">
+        <p class="text-dark">Templates</p>
+        <button class="btn btn-orange" id="btn-orange" (click)="onOpenTemplateView()">Create Template</button>
+      </div>
+      <div>
+        <app-prodcut-details></app-prodcut-details>
+      </div>
+    </div>
+  </div>
+  <ng-template #templateView>
+    <div class="container">
+      <app-add-product></app-add-product>
+    </div>
+  </ng-template>
+</section>
