@@ -10,7 +10,7 @@ import { Iproduct } from '../../model/product';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss']
 })
-export class AddTemplateComponent implements OnInit, OnDestroy {
+export class AddProductComponent implements OnInit, OnDestroy {
   productForm !: FormGroup;
   isVisibleControls: boolean = false;
   @Output() isVisbleViewEvent = new EventEmitter()

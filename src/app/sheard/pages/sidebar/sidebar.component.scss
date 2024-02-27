@@ -1,4 +1,11 @@
 
+section#sidebar > #add-product-section {
+  // height: 100vh;
+  position: fixed;
+  top: 0;
+  background: white;
+  width: 100%;
+}
 
 ::ng-deep #tree{
     width: 20%;

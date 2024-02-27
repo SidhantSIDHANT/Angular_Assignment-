@@ -4,6 +4,7 @@ import { ProdcutDetailsComponent } from './sheard/pages/prodcut-details/prodcut-
 import { SingInComponent } from './sheard/pages/sing-in/sing-in.component';
 import { NavbarComponent } from './sheard/pages/navbar/navbar.component';
 import { AuthGurdService } from './sheard/service/authGurd-service';
+import { AddProductComponent } from './sheard/pages/add-product/add-product.component';
 
 const routes: Routes = [{
   path : "", component : SingInComponent
