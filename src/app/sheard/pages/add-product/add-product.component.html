@@ -22,15 +22,31 @@
             <div class="col-12 col-md-2">
                 <label for=""></label>
                 <div class="form-group text-right">
-                    <button class="btn " id="btn-orange" (click)="addStructuredFeilds()">Create Structure</button>
+                    <button class="btn " id="btn-orange" (click)="addFormsArrayFeilds()">Create Structure</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-5" *ngIf="isVisibleControls">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="" placeholder="modified By"
+                        formControlName="modiFidedBy">
+                </div>
+            </div>
+            <div class="col-12 col-md-5" *ngIf="isVisibleControls">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="modified On" formControlName="modifiedOn">
+                </div>
+            </div>
+            <div class="col-12 col-md-5" *ngIf="isVisibleControls">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="template Id" formControlName="templateId">
                 </div>
             </div>
         </div>
-        <ng-container formArrayName="structureFeild">
+        <ng-container formArrayName="formArray" *ngIf="isVisibleControls">
             <div class="row">
-                <div class="col-12 col-md-5" *ngFor="let element of getStructureFeild?.controls; let i=index;">
+                <div class="col-12 col-md-5" *ngFor="let element of getformArray?.controls; let i=index;">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="" formControlName="{{i}}">
+                        <input type="text" class="form-control" formControlName="{{i}}">
                     </div>
                 </div>
             </div>

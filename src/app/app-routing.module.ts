@@ -9,7 +9,7 @@ const routes: Routes = [{
   path : "", component : SingInComponent
 },{
   path : 'navbar',
-  canActivate : [AuthGurdService],
+  // canActivate : [AuthGurdService],
    component : NavbarComponent
 }];
 
