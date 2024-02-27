@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProductService } from '../../service/product-service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss']
 })
-export class AddTemplateComponent implements OnInit {
+export class AddTemplateComponent implements OnInit , OnDestroy{
   productForm !: FormGroup;
-  constructor() { }
+  @Output() productEvent = new EventEmitter()
+  unSubscript$ : Subject<void> = new Subject<void>()
+
+  constructor(private _prodcutService : ProductService) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -20,11 +25,15 @@ export class AddTemplateComponent implements OnInit {
       region: new FormControl(null, [Validators.required]),
       structureFeild: new FormArray([])
     })
-
   }
 
-  onSubmit(): void {
 
+  onSubmit(): void {
+    alert('hello')
+   if(this.productForm.valid){
+    this._prodcutService.addProducts(this.productForm.value).subscribe((data)=>{});
+    this.productEvent.emit(false)
+   }
   }
 
   addStructuredFeilds(): void {
@@ -34,11 +43,21 @@ export class AddTemplateComponent implements OnInit {
     }
   }
 
+  
+  concel() : void{
+    this.productEvent.emit(false)
+  }
+
   get getStructureFeild() {
     return this.productForm.get("structureFeild") as FormArray
   }
 
   get productFormControls() {
     return this.productForm.controls;
+  }
+
+  ngOnDestroy(): void {
+      this.unSubscript$.next();
+      this.unSubscript$.complete()
   }
 }

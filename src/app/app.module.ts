@@ -13,6 +13,7 @@ import { ProdcutDetailsComponent } from './sheard/pages/prodcut-details/prodcut-
 import {HttpClientModule} from "@angular/common/http";
 import { SingInComponent } from './sheard/pages/sing-in/sing-in.component';
 import { SignUpComponent } from './sheard/pages/sign-up/sign-up.component';
+import { StepperComponent } from './sheard/pages/stepper/stepper.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SignUpComponent } from './sheard/pages/sign-up/sign-up.component';
     ProdcutDetailsComponent,
     SingInComponent,
     SignUpComponent,
+    StepperComponent,
   ],
   imports: [
     BrowserModule,

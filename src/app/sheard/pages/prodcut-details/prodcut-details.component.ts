@@ -1,13 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductService } from '../../service/product-service';
 import { Iproduct } from '../../model/product';
 import { MatTableDataSource } from '@angular/material/table';
 
-const ELEMENT_DATA: any[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-];
 
 @Component({
   selector: 'app-prodcut-details',
@@ -16,7 +11,10 @@ const ELEMENT_DATA: any[] = [
 })
 export class ProdcutDetailsComponent implements OnInit {
   displayedColumns: string[] = ['templateId', 'TemplateName', 'Region', 'ModifiedBy', "ModifiedOn", "action"];
-  dataSource !: any;
+  dataSource !: Iproduct[];
+  @Output() editModeVisible = new EventEmitter();
+  @Output() productEvent = new EventEmitter();
+  
   constructor(private _productService: ProductService) { }
 
   ngOnInit(): void {
@@ -25,7 +23,18 @@ export class ProdcutDetailsComponent implements OnInit {
 
   productData(): void {
     this._productService.getProducts().subscribe((data: Iproduct[]) => {
-      this.dataSource =data;
+      this.dataSource = data;
     })
   }
+
+  onEdit(element : Iproduct): void {
+
+    // this._productService.editProduct(id)
+    this.editModeVisible.emit(true);
+    this.productEvent.emit(element);
+  }
+
+  onDelete(id: string): void {
+    this._productService.deleteProduct(id).subscribe((data)=>{});
+  } 
 }

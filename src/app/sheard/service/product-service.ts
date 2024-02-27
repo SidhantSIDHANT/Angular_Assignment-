@@ -17,8 +17,20 @@ export class ProductService{
         return this._http.get<Iproduct[]>(this.api)
     }
 
-    addUser(user : any) : Observable<IsignUp>{
+    signUpUser(user : any) : Observable<IsignUp>{
        return this._http.post<IsignUp>(this.signUpapi, user)
+    }
+
+    addProducts(product : Iproduct) : Observable<Iproduct> {
+        return this._http.post<Iproduct>(this.api, product)
+    }
+
+    editProduct(id : string, data : Iproduct) : Observable<Iproduct>{
+        return this._http.patch<Iproduct>(`${this.api}/${id}`, data)
+    }
+
+    deleteProduct(id:string):Observable<Iproduct>{
+        return this._http.delete<Iproduct>(`${this.api}/${id}`)
     }
 
     getSignUpUsers():Observable<IsignUp[]>{

@@ -37,7 +37,7 @@ export class SignUpComponent implements OnInit {
   onSignUpUser(): void {
     if (this.singUpForm.valid) {
       let user = this.singUpForm.value;
-      this._productService.addUser(user).subscribe((res) => { });
+      this._productService.signUpUser(user).subscribe((res) => { });
       this.router.navigate(['/navbar']);
       this.authService.signUpUserStatus();
       this.singUpForm.reset();

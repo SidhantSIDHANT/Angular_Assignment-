@@ -1,33 +1,8 @@
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
+import { Iproduct } from '../../model/product';
 
-
-interface FoodNode {
-  name: string;
-  children?: FoodNode[];
-}
-
-const TREE_DATA: FoodNode[] = [
-  {
-    name: 'Vegetables',
-    children: [
-      {
-        name: 'Green',
-        children: [
-          {name: 'Broccoli'},
-          {name: 'Brussels sprouts'},
-        ]
-      }, {
-        name: 'Orange',
-        children: [
-          {name: 'Pumpkins'},
-          {name: 'Carrots'},
-        ]
-      },
-    ]
-  },
-];
 
 @Component({
   selector: 'app-sidebar',
@@ -36,8 +11,9 @@ const TREE_DATA: FoodNode[] = [
 })
 export class SidebarComponent implements OnInit {
   openTemplateView : boolean = false;
-  treeControl = new NestedTreeControl<FoodNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<FoodNode>();
+  treeControl = new NestedTreeControl<any>(node => node.children);
+  dataSource = new MatTreeNestedDataSource<any>();
+  
 
   constructor() {
     this.dataSource.data = [ {
@@ -55,12 +31,23 @@ export class SidebarComponent implements OnInit {
     },];
   }
 
-  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
+  hasChild = (_: number, node: any) => !!node.children && node.children.length > 0;
   ngOnInit(): void {
   }
 
   onOpenTemplateView() : void{
     this.openTemplateView = true;
+  }
+
+  isAddProductViewCancel(ele : boolean): void{
+      this.openTemplateView = ele;
+  }
+
+  isEditModeVisble(mode : boolean) : void{
+    this.openTemplateView = mode;
+  }
+
+  editProduct(element : Iproduct) : void{
   }
 }
 
