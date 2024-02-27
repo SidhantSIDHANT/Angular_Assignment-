@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../../service/product-service';
 import { Subject } from 'rxjs';
+import { DataService } from '../../service/data-service';
+import { Iproduct } from '../../model/product';
 
 @Component({
   selector: 'app-add-product',
@@ -10,13 +12,15 @@ import { Subject } from 'rxjs';
 })
 export class AddTemplateComponent implements OnInit , OnDestroy{
   productForm !: FormGroup;
-  @Output() productEvent = new EventEmitter()
+  @Output() isVisbleViewEvent = new EventEmitter()
   unSubscript$ : Subject<void> = new Subject<void>()
 
-  constructor(private _prodcutService : ProductService) { }
+  constructor(private _prodcutService : ProductService, private dataService : DataService) { }
 
   ngOnInit(): void {
     this.createForm();
+    this.editProduct();
+   
   }
 
   createForm(): void {
@@ -27,12 +31,18 @@ export class AddTemplateComponent implements OnInit , OnDestroy{
     })
   }
 
+  editProduct() : void{
+    
+    this.dataService.getProducts().subscribe((data : any)=>{
+      
+    })
+  }
 
   onSubmit(): void {
     alert('hello')
    if(this.productForm.valid){
     this._prodcutService.addProducts(this.productForm.value).subscribe((data)=>{});
-    this.productEvent.emit(false)
+    this.isVisbleViewEvent.emit(false)
    }
   }
 
@@ -45,7 +55,7 @@ export class AddTemplateComponent implements OnInit , OnDestroy{
 
   
   concel() : void{
-    this.productEvent.emit(false)
+    this.isVisbleViewEvent.emit(false)
   }
 
   get getStructureFeild() {
@@ -57,7 +67,7 @@ export class AddTemplateComponent implements OnInit , OnDestroy{
   }
 
   ngOnDestroy(): void {
-      this.unSubscript$.next();
-      this.unSubscript$.complete()
+      // this.unSubscript$.next();
+      // this.unSubscript$.complete()
   }
 }

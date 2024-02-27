@@ -29,13 +29,13 @@
           <button class="btn btn-orange" id="btn-orange" (click)="onOpenTemplateView()">Create Template</button>
       </div>
       <div>
-       <app-prodcut-details (productEvent)="editProduct($event)" (editModeVisible)="isEditModeVisble($event)"></app-prodcut-details>
+       <app-prodcut-details (editModeVisible)="isEditModeVisble($event)"></app-prodcut-details>
       </div>
     </div>
   </div>
   <ng-template #templateView>
     <div class="container">
-      <app-add-product  (productEvent)="isAddProductViewCancel($event)"></app-add-product>
+      <app-add-product  (isVisbleViewEvent)="isAddProductViewCancel($event)"></app-add-product>
     </div>
   </ng-template>
 </section>

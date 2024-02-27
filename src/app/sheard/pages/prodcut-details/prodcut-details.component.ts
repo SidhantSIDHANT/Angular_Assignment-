@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductService } from '../../service/product-service';
 import { Iproduct } from '../../model/product';
 import { MatTableDataSource } from '@angular/material/table';
+import { DataService } from '../../service/data-service';
 
 
 @Component({
@@ -13,9 +14,8 @@ export class ProdcutDetailsComponent implements OnInit {
   displayedColumns: string[] = ['templateId', 'TemplateName', 'Region', 'ModifiedBy', "ModifiedOn", "action"];
   dataSource !: Iproduct[];
   @Output() editModeVisible = new EventEmitter();
-  @Output() productEvent = new EventEmitter();
   
-  constructor(private _productService: ProductService) { }
+  constructor(private _productService: ProductService, private dataService : DataService) { }
 
   ngOnInit(): void {
     this.productData();
@@ -28,10 +28,8 @@ export class ProdcutDetailsComponent implements OnInit {
   }
 
   onEdit(element : Iproduct): void {
-
-    // this._productService.editProduct(id)
+    this.dataService.sendToSubscriber(element);
     this.editModeVisible.emit(true);
-    this.productEvent.emit(element);
   }
 
   onDelete(id: string): void {
