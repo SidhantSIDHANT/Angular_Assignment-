@@ -22,7 +22,8 @@ export class AddProductComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.createForm();
+    this.createForm(); 
+
     this.editProduct();
 
   }
