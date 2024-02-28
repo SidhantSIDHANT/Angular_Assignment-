@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { DataService } from '../../service/data-service';
 import { Iproduct } from '../../model/product';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -19,7 +19,8 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
   constructor(private _prodcutService: ProductService,
     private dataService: DataService,
-    private _fb: FormBuilder, private router: Router
+    private _fb: FormBuilder, private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -31,15 +32,32 @@ export class AddProductComponent implements OnInit, OnDestroy {
     this.productForm = new FormGroup({
       name: new FormControl(null, [Validators.required]),
       region: new FormControl(null, [Validators.required]),
-      modifidedBy: new FormControl(null,[Validators.required]),
-      modifiedOn: new FormControl(null,[Validators.required]),
+      modifidedBy: new FormControl(null, [Validators.required]),
+      modifiedOn: new FormControl(null, [Validators.required]),
       formArray: this._fb.array([]),
-      templateId: new FormControl(null,[Validators.required])
+      templateId: new FormControl(null, [Validators.required])
     })
   }
 
   editProduct(): void {
-    this.dataService.getProducts().subscribe((data: any) => { })
+    this.route.params.subscribe((params: Params) => {
+      const id = params['id'];
+      this._prodcutService.getProducts().subscribe((data: Iproduct[]) => {
+        console.log(data)
+        data.forEach((item: Iproduct) => {
+          if (item.id == id) {
+            this.productForm.patchValue({
+              name: item.name,
+              region: item.region,
+              modifidedBy: item.modifidedBy,
+              modifiedOn: item.modifiedOn,
+              formArray: item.formArray,
+              templateId: item.templateId
+            })
+          }
+        })
+      })
+    })
   }
 
   onSubmit(): void {

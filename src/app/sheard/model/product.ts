@@ -4,7 +4,7 @@ export interface Iproduct {
     templateId?: string,
     name: string,
     region: string,
-    modifiedBy?: Date,
+    modifidedBy?: Date,
     modifiedOn?: Date,
     formArray ?: Array<any>,
     id ? : string

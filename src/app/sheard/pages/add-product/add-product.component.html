@@ -26,22 +26,25 @@
                             Structure</button>
                     </div>
                 </div>
-                <div class="col-12 col-md-5" *ngIf="isVisibleControls">
-                    <div class="form-group">
-                        <input type="date" class="form-control" placeholder="" placeholder="MODIFIED BY"
-                            formControlName="modifidedBy">
+                <ng-container *ngIf="isVisibleControls">
+                    <div class="col-12 col-md-5">
+                        <div class="form-group">
+                            <input type="date"  formControlName="modifidedBy" class="form-control">
+                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-5" *ngIf="isVisibleControls">
-                    <div class="form-group">
-                        <input type="date" class="form-control" placeholder="MODIFIED ON" formControlName="modifiedOn">
+                    <div class="col-12 col-md-5">
+                        <div class="form-group">
+                            <input type="date" class="form-control" placeholder="MODIFIED ON"
+                                formControlName="modifiedOn">
+                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-5" *ngIf="isVisibleControls">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="TEMPLATE ID" formControlName="templateId">
+                    <div class="col-12 col-md-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="TEMPLATE ID"
+                                formControlName="templateId">
+                        </div>
                     </div>
-                </div>
+                </ng-container>
             </div>
             <ng-container formArrayName="formArray" *ngIf="isVisibleControls">
                 <div class="row">

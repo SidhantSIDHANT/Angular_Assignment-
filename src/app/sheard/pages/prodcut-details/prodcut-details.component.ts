@@ -3,6 +3,7 @@ import { ProductService } from '../../service/product-service';
 import { Iproduct } from '../../model/product';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataService } from '../../service/data-service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,10 @@ export class ProdcutDetailsComponent implements OnInit {
   dataSource !: Iproduct[];
   searchInput !:string;
 
-  constructor(private _productService: ProductService, private dataService : DataService) { }
+  constructor(private _productService: ProductService,
+     private dataService : DataService,
+     private router : Router
+     ) { }
 
   ngOnInit(): void {
     this.productData();
@@ -28,7 +32,7 @@ export class ProdcutDetailsComponent implements OnInit {
   }
 
   onEdit(element : Iproduct): void {
-    // this.dataService.sendToSubscriber(element);
+    this.router.navigate(['/add-product', element.id])
   }
 
   onDelete(id: string): void {
