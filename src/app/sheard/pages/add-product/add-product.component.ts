@@ -4,6 +4,7 @@ import { ProductService } from '../../service/product-service';
 import { Subject } from 'rxjs';
 import { DataService } from '../../service/data-service';
 import { Iproduct } from '../../model/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -18,25 +19,22 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
   constructor(private _prodcutService: ProductService,
     private dataService: DataService,
-    private _fb: FormBuilder
+    private _fb: FormBuilder, private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.createForm(); 
-
+    this.createForm();
     this.editProduct();
-
   }
 
   createForm(): void {
-  
     this.productForm = new FormGroup({
       name: new FormControl(null, [Validators.required]),
       region: new FormControl(null, [Validators.required]),
       modifidedBy: new FormControl(),
       modifiedOn: new FormControl(),
       formArray: this._fb.array([]),
-      templateId : new FormControl()
+      templateId: new FormControl()
     })
   }
 
@@ -46,15 +44,16 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     if (this.productForm.valid) {
+      this.router.navigate(["/navbar"])
       this._prodcutService.addProducts(this.productForm.value).subscribe((data) => { });
       this.isVisbleViewEvent.emit(false)
     }
   }
 
-  addFormsArrayFeilds(): void {
-    this.isVisibleControls=true;
+  addFormsArray(): void {
+    this.isVisibleControls = true;
     const formControl = new FormControl(null, [Validators.required]);
-    if (this.getformArray.length>0 && this.getformArray.length < 6) {
+    if (this.getformArray.length > 0 && this.getformArray.length < 6) {
       this.getformArray.push(formControl)
     }
   }
@@ -62,6 +61,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
   concel(): void {
     this.isVisbleViewEvent.emit(false)
+    this.router.navigate(["/navbar"])
   }
 
   get getformArray() {
