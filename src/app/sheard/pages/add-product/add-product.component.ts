@@ -31,10 +31,10 @@ export class AddProductComponent implements OnInit, OnDestroy {
     this.productForm = new FormGroup({
       name: new FormControl(null, [Validators.required]),
       region: new FormControl(null, [Validators.required]),
-      modifidedBy: new FormControl(null,),
-      modifiedOn: new FormControl(null),
+      modifidedBy: new FormControl(null,[Validators.required]),
+      modifiedOn: new FormControl(null,[Validators.required]),
       formArray: this._fb.array([]),
-      templateId: new FormControl(null)
+      templateId: new FormControl(null,[Validators.required])
     })
   }
 
@@ -43,7 +43,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    alert('Create Structure')
+    alert("CREATE STRURCTURE")
     if (this.productForm.valid) {
       this.router.navigate(["/navbar"])
       this._prodcutService.addProducts(this.productForm.value).pipe(takeUntil(this.unSubscript$)).subscribe((data) => { });
