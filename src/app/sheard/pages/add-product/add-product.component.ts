@@ -31,10 +31,10 @@ export class AddProductComponent implements OnInit, OnDestroy {
     this.productForm = new FormGroup({
       name: new FormControl(null, [Validators.required]),
       region: new FormControl(null, [Validators.required]),
-      modifidedBy: new FormControl(null,[Validators.required]),
-      modifiedOn: new FormControl(null,[Validators.required]),
+      modifidedBy: new FormControl(null, [Validators.required]),
+      modifiedOn: new FormControl(null, [Validators.required]),
       formArray: this._fb.array([]),
-      templateId: new FormControl(null,[Validators.required])
+      templateId: new FormControl(null, [Validators.required])
     })
   }
 
