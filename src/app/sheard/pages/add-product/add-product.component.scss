@@ -1,12 +1,13 @@
-.form{
+#form{
     background-image: url(../../../../assets/images/file.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover; 
+    height: 100%;
+
+    .button_positon{
+        position: fixed;
+        bottom: 5%;
+        right: 9%;
+    }
 }
 
-.button_positon{
-    position: fixed;
-    bottom: 5%;
-    right: 9%;
-}

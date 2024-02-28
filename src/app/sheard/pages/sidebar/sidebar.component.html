@@ -1,5 +1,5 @@
 <section class="sidebar" id="sidebar">
-  <div class="d-flex" *ngIf="!openTemplateView; else templateView">
+  <div class="d-flex">
     <div class="tree" id="tree">
       <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
         <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
@@ -23,18 +23,11 @@
     <div class="templates p-4">
       <div class="d-flex justify-content-between">
         <p>Templates</p>
-        <button class="btn btn-orange" id="btn-orange" (click)="onOpenTemplateView()">Create Template</button>
+        <button class="btn btn-orange" id="btn-orange" routerLink="/add-product">Create Template</button>
       </div>
       <div>
-        <app-prodcut-details (editModeVisible)="isEditModeVisble($event)"></app-prodcut-details>
+        <app-prodcut-details ></app-prodcut-details>
       </div>
     </div>
   </div>
-  <ng-template #templateView>
-    <section id="add-product-section">
-      <div class="container">
-        <app-add-product (isVisbleViewEvent)="isAddProductViewCancel($event)"></app-add-product>
-      </div>
-    </section>
-  </ng-template>
 </section>

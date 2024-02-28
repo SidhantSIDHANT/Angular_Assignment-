@@ -13,7 +13,6 @@ import { DataService } from '../../service/data-service';
 export class ProdcutDetailsComponent implements OnInit {
   displayedColumns: string[] = ['templateId', 'TemplateName', 'Region', 'ModifiedBy', "ModifiedOn", "action"];
   dataSource !: Iproduct[];
-  @Output() editModeVisible = new EventEmitter();
   
   constructor(private _productService: ProductService, private dataService : DataService) { }
 
@@ -28,8 +27,7 @@ export class ProdcutDetailsComponent implements OnInit {
   }
 
   onEdit(element : Iproduct): void {
-    this.dataService.sendToSubscriber(element);
-    this.editModeVisible.emit(true);
+    // this.dataService.sendToSubscriber(element);
   }
 
   onDelete(id: string): void {

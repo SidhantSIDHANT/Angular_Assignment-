@@ -35,18 +35,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onOpenTemplateView() : void{
-    this.openTemplateView = true;
-  }
-
-  isAddProductViewCancel(ele : boolean): void{
-      this.openTemplateView = ele;
-  }
-
-  isEditModeVisble(mode : boolean) : void{
-    this.openTemplateView = mode;
-  }
-
   editProduct(element : Iproduct) : void{
   }
 }

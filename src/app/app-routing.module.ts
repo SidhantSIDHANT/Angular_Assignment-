@@ -12,6 +12,8 @@ const routes: Routes = [{
   path : 'navbar',
   // canActivate : [AuthGurdService],
    component : NavbarComponent
+},{
+  path : 'add-product', component:AddProductComponent
 }];
 
 @NgModule({
