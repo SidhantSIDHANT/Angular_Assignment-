@@ -58,10 +58,6 @@ export class AddProductComponent implements OnInit, OnDestroy {
     }
   }
 
-  setValidators(): void {
-
-  }
-
   concel(): void {
     this.router.navigate(["/navbar"])
   }
