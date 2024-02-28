@@ -6,7 +6,7 @@ export interface Iproduct {
     region: string,
     modifiedBy?: Date,
     modifiedOn?: Date,
-    formArray : Array<any>,
+    formArray ?: Array<any>,
     id ? : string
 }
 

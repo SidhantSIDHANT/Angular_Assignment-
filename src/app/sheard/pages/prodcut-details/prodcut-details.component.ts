@@ -13,7 +13,8 @@ import { DataService } from '../../service/data-service';
 export class ProdcutDetailsComponent implements OnInit {
   displayedColumns: string[] = ['templateId', 'TemplateName', 'Region', 'ModifiedBy', "ModifiedOn", "action"];
   dataSource !: Iproduct[];
-  
+  searchInput !:string;
+
   constructor(private _productService: ProductService, private dataService : DataService) { }
 
   ngOnInit(): void {

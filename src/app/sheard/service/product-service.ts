@@ -23,7 +23,7 @@ export class ProductService{
 
     addProducts(product : Iproduct) : Observable<Iproduct> {
         const header = new HttpHeaders({
-            "Content-type" : "Application/json"
+            'Content-Type': 'application/json',
         })
         return this._http.post<Iproduct>(this.api, product,{headers : header})
     }
