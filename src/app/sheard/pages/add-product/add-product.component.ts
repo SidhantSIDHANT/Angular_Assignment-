@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../../service/product-service';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { DataService } from '../../service/data-service';
 import { Iproduct } from '../../model/product';
 import { Router } from '@angular/router';
@@ -45,7 +46,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     if (this.productForm.valid) {
       this.router.navigate(["/navbar"])
-      this._prodcutService.addProducts(this.productForm.value).subscribe((data) => { });
+      this._prodcutService.addProducts(this.productForm.value).pipe(takeUntil(this.unSubscript$)).subscribe((data) => { });
       this.isVisbleViewEvent.emit(false)
     }
   }
@@ -57,7 +58,6 @@ export class AddProductComponent implements OnInit, OnDestroy {
       this.getformArray.push(formControl)
     }
   }
-
 
   concel(): void {
     this.isVisbleViewEvent.emit(false)
@@ -73,7 +73,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // this.unSubscript$.next();
-    // this.unSubscript$.complete()
+    this.unSubscript$.next();
+    this.unSubscript$.complete()
   }
 }
