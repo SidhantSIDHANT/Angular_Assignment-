@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
 export class AddProductComponent implements OnInit, OnDestroy {
   productForm !: FormGroup;
   isVisibleControls: boolean = false;
-  @Output() isVisbleViewEvent = new EventEmitter()
   unSubscript$: Subject<void> = new Subject<void>()
 
   constructor(private _prodcutService: ProductService,
@@ -47,7 +46,6 @@ export class AddProductComponent implements OnInit, OnDestroy {
     if (this.productForm.valid) {
       this.router.navigate(["/navbar"])
       this._prodcutService.addProducts(this.productForm.value).pipe(takeUntil(this.unSubscript$)).subscribe((data) => { });
-      this.isVisbleViewEvent.emit(false)
     }
   }
 
@@ -60,7 +58,6 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   concel(): void {
-    this.isVisbleViewEvent.emit(false)
     this.router.navigate(["/navbar"])
   }
 
