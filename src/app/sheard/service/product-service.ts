@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Iproduct, IsignUp } from "../model/product";
 import { Observable } from "rxjs";
@@ -22,7 +22,10 @@ export class ProductService{
     }
 
     addProducts(product : Iproduct) : Observable<Iproduct> {
-        return this._http.post<Iproduct>(this.api, product)
+        const header = new HttpHeaders({
+            "Content-type" : "Application/json"
+        })
+        return this._http.post<Iproduct>(this.api, product,{headers : header})
     }
 
     updateProduct(id : string, data : Iproduct) : Observable<Iproduct>{

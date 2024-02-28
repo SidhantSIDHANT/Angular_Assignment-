@@ -4,14 +4,16 @@ export interface Iproduct {
     templateId?: string,
     name: string,
     region: string,
-    modifiedBy?: string,
-    modifiedOn?: string,
-    formArray : Array<any>
+    modifiedBy?: Date,
+    modifiedOn?: Date,
+    formArray : Array<any>,
+    id ? : string
 }
 
 export interface IsignUp{
     userName : string,
     email : string, 
-    password : string
+    password : string,
+    id ? : string
 }
 

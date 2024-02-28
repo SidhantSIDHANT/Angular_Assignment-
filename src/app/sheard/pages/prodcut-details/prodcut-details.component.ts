@@ -31,6 +31,11 @@ export class ProdcutDetailsComponent implements OnInit {
   }
 
   onDelete(id: string): void {
+    const indexNumber = this.dataSource.findIndex((index)=>{
+      return index?.id === id;
+    })
+    this.dataSource.splice(indexNumber,1);
+    this.dataSource = [...this.dataSource]
     this._productService.deleteProduct(id).subscribe((data)=>{});
   } 
 }
