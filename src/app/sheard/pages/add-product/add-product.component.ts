@@ -43,19 +43,19 @@ export class AddProductComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((params: Params) => {
       const id = params['id'];
       this._prodcutService.getProducts().subscribe((data: Iproduct[]) => {
-        console.log(data)
-        data.forEach((item: Iproduct) => {
-          if (item.id == id) {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].id == id) {
             this.productForm.patchValue({
-              name: item.name,
-              region: item.region,
-              modifidedBy: item.modifidedBy,
-              modifiedOn: item.modifiedOn,
-              formArray: item.formArray,
-              templateId: item.templateId
+              name: data[i].name,
+              region: data[i].region,
+              modifidedBy: data[i].modifidedBy,
+              modifiedOn: data[i].modifiedOn,
+              formArray: data[i].formArray,
+              templateId: data[i].templateId
             })
+            break;
           }
-        })
+        }
       })
     })
   }
@@ -63,7 +63,8 @@ export class AddProductComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     alert("CREATE STRURCTURE")
     if (this.productForm.valid) {
-      this.router.navigate(["/navbar"])
+      this.router.navigate(["/navbar"]);
+      localStorage.setItem("productForm", JSON.stringify(this.productForm.value));
       this._prodcutService.addProducts(this.productForm.value).pipe(takeUntil(this.unSubscript$)).subscribe((data) => { });
     }
   }
@@ -89,7 +90,9 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unSubscript$.next();
-    this.unSubscript$.complete()
+    setTimeout(() => {
+      this.unSubscript$.next();
+      this.unSubscript$.complete()
+    }, 1000)
   }
 }

@@ -14,33 +14,41 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProdcutDetailsComponent implements OnInit {
   displayedColumns: string[] = ['templateId', 'TemplateName', 'Region', 'ModifiedBy', "ModifiedOn", "action"];
   dataSource !: Iproduct[];
-  searchInput !:string;
+  searchInput !: string;
 
   constructor(private _productService: ProductService,
-     private dataService : DataService,
-     private router : Router
-     ) { }
+    private dataService: DataService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.productData();
+    this.getProductData();
+    this.addProductUsers();
   }
 
-  productData(): void {
+  addProductUsers(): void {
+    const product = JSON.stringify(localStorage.getItem('productForm')) as any;
+    if (product) {
+      this.dataSource.push(product);
+    }
+  }
+
+  getProductData(): void {
     this._productService.getProducts().subscribe((data: Iproduct[]) => {
       this.dataSource = data;
     })
   }
 
-  onEdit(element : Iproduct): void {
+  onEdit(element: Iproduct): void {
     this.router.navigate(['/add-product', element.id])
   }
 
   onDelete(id: string): void {
-    const indexNumber = this.dataSource.findIndex((index)=>{
+    const indexNumber = this.dataSource.findIndex((index) => {
       return index?.id === id;
     })
-    this.dataSource.splice(indexNumber,1);
+    this.dataSource.splice(indexNumber, 1);
     this.dataSource = [...this.dataSource]
-    this._productService.deleteProduct(id).subscribe((data)=>{});
-  } 
+    this._productService.deleteProduct(id).subscribe((data) => { });
+  }
 }

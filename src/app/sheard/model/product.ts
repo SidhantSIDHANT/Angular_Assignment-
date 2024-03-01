@@ -1,12 +1,12 @@
 
 
 export interface Iproduct {
-    templateId?: string,
     name: string,
     region: string,
-    modifidedBy?: Date,
-    modifiedOn?: Date,
-    formArray ?: Array<any>,
+    modifidedBy ?: string,
+    modifiedOn?: string,
+    formArray?: Array<any>,
+    templateId?: string,
     id ? : string
 }
 

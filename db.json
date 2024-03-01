@@ -1,38 +1,29 @@
 {
-  "signUpUsers": [
-    {
-      "userName": "ss",
-      "email": "ss",
-      "password": "ss",
-      "id": 1
-    },
-    {
-      "userName": "sf",
-      "email": "sdf",
-      "password": "sdf",
-      "id": 2
-    },
-    {
-      "userName": "sdf",
-      "email": "sdf",
-      "password": "sdf",
-      "id": 3
-    },
-    {
-      "userName": "ss",
-      "email": "ss",
-      "password": "ss",
-      "id": 4
-    }
-  ],
   "posts": [
     {
-      "name": "ss",
-      "region": "vw",
-      "modifidedBy": "2024-02-13",
-      "modifiedOn": "2024-02-18",
+      "name": "Sidhant",
+      "region": "uk",
+      "modifidedBy": "ss",
+      "modifiedOn": "ss",
       "formArray": [],
       "templateId": "ssss",
+      "id": 7
+    },
+    {
+      "name": "ss",
+      "region": "uk",
+      "modifidedBy": "2024-03-23",
+      "modifiedOn": "2024-04-01",
+      "formArray": [],
+      "templateId": "ssss",
+      "id": 8
+    }
+  ],
+  "signUpUsers": [
+    {
+      "userName": "s",
+      "email": "s",
+      "password": "s",
       "id": 1
     }
   ],
