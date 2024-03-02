@@ -29,7 +29,8 @@ export class ProdcutDetailsComponent implements OnInit {
   addProductUsers(): void {
     const product = JSON.stringify(localStorage.getItem('productForm')) as any;
     if (product) {
-      this.dataSource.push(product);
+      this.dataSource?.push(product);
+      localStorage.clear();
     }
   }
 
@@ -41,6 +42,22 @@ export class ProdcutDetailsComponent implements OnInit {
 
   onEdit(element: Iproduct): void {
     this.router.navigate(['/add-product', element.id])
+  }
+
+  updateProduct(): void {
+    const user = JSON.parse(localStorage.getItem('productForm')!);
+    localStorage.removeItem('productForm');
+    for (let i = 0; i < this.dataSource.length; i++) {
+       if(user.id === this.dataSource[i].id){
+        this.dataSource[i].name = user.name;
+       this.dataSource[i].region = user.region;
+       this.dataSource[i].modifidedBy = user.modifidedBy;
+       this.dataSource[i].modifiedOn = user.modifiedOn;
+       this.dataSource[i].templateId = user.templateId;
+       this.dataSource[i].formArray = user.formArray;
+       break
+       }
+    }
   }
 
   onDelete(id: string): void {

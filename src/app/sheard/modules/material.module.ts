@@ -7,6 +7,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatStepperModule} from '@angular/material/stepper';
+import {CdkAccordionModule} from '@angular/cdk/accordion';
 @NgModule({
   declarations: [],
   imports: [
@@ -17,7 +18,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatStepperModule
+    MatStepperModule,
+    CdkAccordionModule
   ],
   exports: [MatTreeModule,
     MatIconModule,
@@ -25,7 +27,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatStepperModule
+    MatStepperModule,
+    CdkAccordionModule
   ]
 })
 export class MaterialModule { }

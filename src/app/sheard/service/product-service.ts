@@ -28,7 +28,7 @@ export class ProductService{
         return this._http.post<Iproduct>(this.api, product)
     }
 
-    updateProduct(id : string, data : Iproduct) : Observable<Iproduct>{
+    updateSingleProduct(id : string, data : Iproduct) : Observable<Iproduct>{
         return this._http.patch<Iproduct>(`${this.api}/${id}`, data)
     }
 

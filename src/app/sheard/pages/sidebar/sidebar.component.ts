@@ -14,28 +14,10 @@ export class SidebarComponent implements OnInit {
   treeControl = new NestedTreeControl<any>(node => node.children);
   dataSource = new MatTreeNestedDataSource<any>();
   
+  constructor() {}
 
-  constructor() {
-    this.dataSource.data = [ {
-      name: 'Configurations',
-      children: [
-        {name: 'Templates'},
-      ]
-    }, {
-      name: 'Document Prep',
-      children: [
-        {name: 'Products'},
-        {name: 'Applications'},
-        {name: 'Sequences'},
-      ]
-    },];
-  }
-
-  hasChild = (_: number, node: any) => !!node.children && node.children.length > 0;
   ngOnInit(): void {
   }
 
-  editProduct(element : Iproduct) : void{
-  }
 }
 

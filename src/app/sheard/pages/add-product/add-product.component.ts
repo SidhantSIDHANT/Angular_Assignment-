@@ -15,7 +15,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class AddProductComponent implements OnInit, OnDestroy {
   productForm !: FormGroup;
   isVisibleControls: boolean = false;
-  unSubscript$: Subject<void> = new Subject<void>()
+  unSubscript$: Subject<void> = new Subject<void>();
+  id !: string;
 
   constructor(private _prodcutService: ProductService,
     private dataService: DataService,
@@ -41,10 +42,10 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
   editProduct(): void {
     this.route.params.subscribe((params: Params) => {
-      const id = params['id'];
+      this.id = params['id'];
       this._prodcutService.getProducts().subscribe((data: Iproduct[]) => {
         for (let i = 0; i < data.length; i++) {
-          if (data[i].id == id) {
+          if (data[i].id == this.id) {
             this.productForm.patchValue({
               name: data[i].name,
               region: data[i].region,
@@ -61,7 +62,9 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    alert("CREATE STRURCTURE")
+    if (!this.isVisibleControls) {
+      alert("CREATE STRURCTURE")
+    }
     if (this.productForm.valid) {
       this.router.navigate(["/navbar"]);
       localStorage.setItem("productForm", JSON.stringify(this.productForm.value));
@@ -79,6 +82,16 @@ export class AddProductComponent implements OnInit, OnDestroy {
 
   concel(): void {
     this.router.navigate(["/navbar"])
+  }
+
+  updateProduct(): void {
+    if (this.productForm.valid) {
+      localStorage.setItem('poroductForm', JSON.stringify(this.productForm.value));
+      this._prodcutService.updateSingleProduct(this.id, this.productForm.value).subscribe((element) => { }, (err) => { });
+      this.router.navigate(['/navbar']);
+    } else if (!this.isVisibleControls) {
+      alert('please create structrue')
+    }
   }
 
   get getformArray() {
